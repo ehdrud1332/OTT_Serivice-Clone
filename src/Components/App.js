@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import Router from './Router';
+import Header from './Header';
+
 
 class App extends Component {
     render() {
         return (
             <div>
-              <h1>ott App</h1>
+                <Header/>
                 <Router />
             </div>
         );

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-class App extends Component {
+class Detail extends Component {
     render() {
         return (
             <div>
-              <h1>ott App</h1>
+               <h1>Detail</h1>
             </div>
         );
     }
 }
 
-export default App;
+export default Detail;

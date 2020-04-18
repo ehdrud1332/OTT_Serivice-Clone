@@ -57,7 +57,7 @@ const Poster = ({id, imageUrl, title, rating, year}) => (
                 {rating} / 10
             </Rating>
         </ImageContainer>
-        <Title>{title}</Title>
+        <Title>{title.slice(0, 18)}...</Title>
         <Year>{year}</Year>
     </Container>
 );

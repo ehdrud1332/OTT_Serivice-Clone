@@ -37,7 +37,13 @@ loading ? (
         {popular && popular.length > 0 && (
             <Section title="Popular">
                 {popular.map(movie =>
-                    <span key={movie.id}>{movie.title}</span>
+                    <Poster
+                        id={movie.id}
+                        imageUrl={movie.poster_path}
+                        title={movie.title}
+                        year={movie.release_date}
+                        rating={movie.vote_average}
+                    />
                 )}
             </Section>
 
@@ -46,7 +52,13 @@ loading ? (
         {upcoming && upcoming.length > 0 && (
             <Section title="upcoming">
                 { popular.map(movie =>
-                    <span key={movie.id}>{movie.title}</span>
+                    <Poster
+                        id={movie.id}
+                        imageUrl={movie.poster_path}
+                        title={movie.title}
+                        year={movie.release_date}
+                        rating={movie.vote_average}
+                    />
                 )}
             </Section>
         )}

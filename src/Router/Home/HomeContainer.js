@@ -1,13 +1,57 @@
-import React, {Component} from 'react';
 
-class HomeCon extends Component {
+
+import React, {Component} from 'react';
+import HomePresenter from './HomePresenter'
+import {moviesApi} from "../../api";
+
+export default class HomeContainer extends Component {
+
+    state = {
+        nowPlaying: null,
+        upcoming: null,
+        popular : null,
+        error: null,
+        loading: true
+    };
+
+    async componentDidMount() {
+        try {
+            const {
+                data: { results : nowPlaying }
+            } = await moviesApi.nowPlaying();
+            const {
+                data: {results: upcoming}
+            } = await moviesApi.upcoming();
+            const {
+                data: {results: popular}
+            } = await moviesApi.popular();
+            this.setState({ nowPlaying, upcoming, popular });
+        } catch {
+            this.setState({
+                error: "can't fing movies infromation"
+            });
+        } finally {
+            this.setState({
+                loading: false
+            });
+        }
+    }
+
     render() {
+
+        const { nowPlaying, upcoming, popular, error, loading } = this.state;
+
+        console.log(nowPlaying);
+
         return (
-            <div>
-                <h1>home</h1>
-            </div>
+            <HomePresenter
+                loading={loading}
+                error={error}
+                nowPlaying={nowPlaying}
+                popular={popular}
+                upcoming={upcoming}
+            />
         );
     }
 }
 
-export default HomeCon;

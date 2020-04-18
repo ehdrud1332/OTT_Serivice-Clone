@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class SearchCon extends Component {
+class SearchContainer extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class SearchCon extends Component {
     }
 }
 
-export default SearchCon;
+export default SearchContainer;

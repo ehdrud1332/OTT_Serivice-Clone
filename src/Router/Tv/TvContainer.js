@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import TvPresenter from "./TvPresenter";
 
-class TvCon extends Component {
+class TvContainer extends Component {
     render() {
         return (
             <div>
@@ -10,4 +11,4 @@ class TvCon extends Component {
     }
 }
 
-export default TvCon;
+export default TvContainer;

@@ -6,12 +6,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from "../../Components/Loader";
 
+
+const Container = styled.div`
+  padding : 20px 30px;
+`;
+
 //2번
 const HomePresenter = ({nowPlaying, popular, upcoming, loading, error}) => (
 loading ? (
     <Loader/>
 ) : (
-    <div>
+    <Container>
         {nowPlaying && nowPlaying.length > 0 && (
             nowPlaying.map(movie =>
                 <span key={movie.id}>{movie.title}</span>
@@ -29,7 +34,7 @@ loading ? (
                 <span key={movie.id}>{movie.title}</span>
             )
         )}
-    </div>
+    </Container>
 ))
 
 HomePresenter.propTypes = {

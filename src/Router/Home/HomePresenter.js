@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
+import Poster from "../../Components/Poster";
 
 const Container = styled.div`
   padding : 20px 30px;
@@ -21,7 +22,13 @@ loading ? (
         {nowPlaying && nowPlaying.length > 0 && (
             <Section title="Now-Playing">
                 {nowPlaying.map(movie =>
-                    <span key={movie.id}>{movie.title}</span>
+                    <Poster
+                        id={movie.id}
+                        imageUrl={movie.poster_path}
+                        title={movie.title}
+                        year={movie.release_date}
+                        rating={movie.vote_average}
+                    />
                 )}
             </Section>
 

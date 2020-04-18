@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-class Tv extends Component {
+class DetailCon extends Component {
     render() {
         return (
             <div>
-                <h1>TV</h1>
+               <h1>Detail</h1>
             </div>
         );
     }
 }
 
-export default Tv;
+export default DetailCon;

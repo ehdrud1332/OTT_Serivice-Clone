@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const TvPresenter = ({ topRated, popular, airingToday, loading, error}) =>
-    <h1>{topRated}</h1>
+    <h1>ffrvfvrvrg</h1>
 
 TvPresenter.propTypes = {
     topRated: PropTypes.array,

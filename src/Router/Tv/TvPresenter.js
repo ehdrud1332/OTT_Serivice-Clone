@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from "../../Components/Loader";
+import Section from "../../Components/Section";
 
 
 const Container = styled.div`
@@ -14,21 +15,28 @@ const TvPresenter = ({ topRated, popular, airingToday, loading, error}) => (
     ) : (
         <Container>
             {topRated && topRated.length > 0 && (
-                topRated.map(tv =>
-                    <span key={tv.id}>{tv.original_name}</span>
-                )
+                <Section title="topRated">
+                    {topRated.map(tv =>
+                        <span key={tv.id}>{tv.original_name}</span>
+                    )}
+                </Section>
             )}
 
             {popular && popular.length > 0 && (
-                popular.map(tv =>
-                    <span key={tv.id}>{tv.original_name}</span>
-                )
+                <Section title="popular">
+                    {popular.map(tv =>
+                        <span key={tv.id}>{tv.original_name}</span>
+                    )}
+                </Section>
             )}
 
             {airingToday && airingToday.length > 0 && (
-                airingToday.map(tv =>
-                    <span key={tv.id}>{tv.original_name}</span>
-                )
+                <Section title="airingToday">
+                    {airingToday.map(tv =>
+                        <span key={tv.id}>{tv.original_name}</span>
+                    )}
+                </Section>
+
             )}
         </Container>
     )

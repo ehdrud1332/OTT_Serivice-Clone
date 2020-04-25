@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import SearchPresenter from "./SearchPresenter";
+import {moviesApi, tvApi} from "../../api";
+
+
 
 class SearchContainer extends Component {
 
@@ -12,7 +15,31 @@ class SearchContainer extends Component {
     }
 
     handleSubmit = () => {
+        const {keyword} = this.state;
+        if (keyword !== "") {
+            this.searchByKeyword();
+        }
 
+    };
+
+    searchByKeyword = async () => {
+        const {keyword} = this.state;
+        this.setState({loading: true})
+        try {
+            const {
+                data : { results: moviesResults}
+            } = await moviesApi.search(keyword)
+            const {
+                data : { results: tvResults}
+            } = await tvApi.search(keyword)
+            this.setState({
+                moviesResults, tvResults
+            });
+        } catch {
+            this.setState({error: "can't find results"});
+        } finally {
+            this.setState({loading: false});
+        }
     };
 
     render() {

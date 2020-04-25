@@ -24,6 +24,7 @@ loading ? (
             <Section title="Now-Playing">
                 {nowPlaying.map(movie =>
                     <Poster
+                        key={movie.id}
                         id={movie.id}
                         imageUrl={movie.poster_path}
                         title={movie.title}
@@ -39,6 +40,7 @@ loading ? (
             <Section title="Popular">
                 {popular.map(movie =>
                     <Poster
+                        key={movie.id}
                         id={movie.id}
                         imageUrl={movie.poster_path}
                         title={movie.title}
@@ -54,6 +56,7 @@ loading ? (
             <Section title="upcoming">
                 { popular.map(movie =>
                     <Poster
+                        key={movie.id}
                         id={movie.id}
                         imageUrl={movie.poster_path}
                         title={movie.title}

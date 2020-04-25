@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   font-size: 12px;
@@ -48,25 +49,25 @@ const Year = styled.span`
 `;
 
 
-const Poster = ({id, imageUrl, title, rating, year}) => (
-    <Container>
-        <ImageContainer>
-            <Image bgUrl={
-                imageUrl
-                    ? `http://images.tmdb.org/t/p/w300${imageUrl}`
-                    : require("../Img/emptyimage.png")
+const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) => (
+    <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+        <Container>
+            <ImageContainer>
+                <Image bgUrl={
+                    imageUrl
+                        ? `http://images.tmdb.org/t/p/w300${imageUrl}`
+                        : require("../Img/emptyimage.png")
+                } />
 
-
-            } />
-
-            <Rating>
-                <span>⭐️</span>
-                {rating} / 10
-            </Rating>
-        </ImageContainer>
-        <Title>{title.slice(0, 18)}...</Title>
-        <Year>{year}</Year>
-    </Container>
+                <Rating>
+                    <span>⭐️</span>
+                    {rating} / 10
+                </Rating>
+            </ImageContainer>
+            <Title>{title.slice(0, 18)}...</Title>
+            <Year>{year}</Year>
+        </Container>
+    </Link>
 );
 
 Poster.propTypes = {
@@ -74,7 +75,8 @@ Poster.propTypes = {
     imageUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
     rating: PropTypes.number,
-    year: PropTypes.string
+    year: PropTypes.string,
+    isMovie: PropTypes.bool
 };
 
 export default Poster;

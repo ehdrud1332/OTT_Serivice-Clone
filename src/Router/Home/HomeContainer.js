@@ -41,8 +41,6 @@ export default class HomeContainer extends Component {
 
         const { nowPlaying, upcoming, popular, error, loading } = this.state;
 
-        console.log(nowPlaying);
-
         return (
             <HomePresenter
                 loading={loading}

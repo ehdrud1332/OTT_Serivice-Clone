@@ -20,6 +20,7 @@ const TvPresenter = ({ topRated, popular, airingToday, loading, error}) => (
                 <Section title="topRated">
                     {topRated.map(tv =>
                         <Poster
+                            key={tv.id}
                             id={tv.original_name}
                             title={tv.name}
                             imageUrl={tv.poster_path}
@@ -34,6 +35,7 @@ const TvPresenter = ({ topRated, popular, airingToday, loading, error}) => (
                 <Section title="popular">
                     {popular.map(tv =>
                         <Poster
+                            key={tv.id}
                             id={tv.original_name}
                             title={tv.name}
                             imageUrl={tv.poster_path}

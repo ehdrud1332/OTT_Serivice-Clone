@@ -37,7 +37,6 @@ export default class TvContainer extends Component {
     render() {
 
         const { loading, popular, airingToday, error, topRated } = this.state;
-            console.log("tv popular is ", popular)
         return (
             <div>
                 <TvPresenter

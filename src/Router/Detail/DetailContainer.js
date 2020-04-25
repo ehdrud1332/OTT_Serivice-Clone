@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import DetailPresenter from "./DetailPresenter";
 import {moviesApi, tvApi} from "../../api";
 
-class DetailContainer extends Component {
+export default class DetailContainer extends Component {
 
     constructor(props) {
         super(props);
@@ -36,13 +36,13 @@ class DetailContainer extends Component {
             } else {
                 ({ date : result} = await tvApi.showDetail(parsedId));
             }
-            this.setState({result})
+            // this.setState({result})
 
         } catch {
             this.setState({error: "Can't find anything"});
         } finally {
             this.setState({
-                loading: false
+                loading: false, result
             });
         }
     }
@@ -52,7 +52,7 @@ class DetailContainer extends Component {
     render() {
 
         const {result, loading, error} = this.state;
-
+        console.log(result)
         return (
             <DetailPresenter
                 loading={loading}
@@ -63,4 +63,3 @@ class DetailContainer extends Component {
     }
 }
 
-export default DetailContainer;

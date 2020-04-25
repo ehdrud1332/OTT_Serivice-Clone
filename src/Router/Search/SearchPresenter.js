@@ -18,6 +18,7 @@ import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
+import Poster from "../../Components/Poster";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -53,13 +54,48 @@ class SearchPresenter extends Component {
 
         return (
             <Container>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     <Input
                         placeholder="Search Movies or Tv Shows..."
                         value={keyword}
                         onChange={updateKeyword}
                     />
                 </Form>
+                {loading ? (
+                    <Loader/>
+                ) : (
+                    <>
+                        {movieResults && movieResults.length > 0 && (
+                            <Section title="Movie Results">
+                                {movieResults.map(movie => (
+                                    <Poster
+                                        key={movie.id}
+                                        id={movie.id}
+                                        title={movie.title}
+                                        imageUrl={movie.poster_path}
+                                        rating={movie.vote_average}
+                                        year={movie.release_date}
+                                    />
+                                ))}
+                            </Section>
+                        )}
+
+                        {tvResults && tvResults.length > 0 && (
+                            <Section title="tv Results">
+                                {tvResults.map(show => (
+                                    <Poster
+                                        key={show.id}
+                                        id={show.id}
+                                        title={show.name}
+                                        imageUrl={show.poster_path}
+                                        rating={show.vote_average}
+                                        year={show.first_air_date}
+                                    />
+                                ))}
+                            </Section>
+                        )}
+                    </>
+                )}
             </Container>
         );
     }

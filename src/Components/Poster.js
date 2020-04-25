@@ -67,7 +67,7 @@ Poster.propTypes = {
     imageUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
     rating: PropTypes.number,
-    year: PropTypes.number
+    year: PropTypes.string
 };
 
 export default Poster;

@@ -19,6 +19,7 @@ import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
+import Message from "../../Components/Message";
 
 const Container = styled.div`
   padding: 15px 20px;
@@ -80,6 +81,7 @@ class SearchPresenter extends Component {
                             </Section>
                         )}
 
+
                         {tvResults && tvResults.length > 0 && (
                             <Section title="tv Results">
                                 {tvResults.map(show => (
@@ -94,8 +96,14 @@ class SearchPresenter extends Component {
                                 ))}
                             </Section>
                         )}
+                        {error && <Message color="#e74c3c" text={error} />}
+                        {tvResults && movieResults && tvResults.length === 0 &&
+                            movieResults.length === 0 && <Message text="Nothing found" color="#95a5a6"/>
+                        }
+
                     </>
                 )}
+
             </Container>
         );
     }

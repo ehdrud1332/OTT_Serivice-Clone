@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
+import Message from "../../Components/Message";
 
 const Container = styled.div`
   padding : 20px 30px;
@@ -62,6 +63,7 @@ loading ? (
                 )}
             </Section>
         )}
+        {error && <Message color="#e74c3c" text={error} />}
     </Container>
 ))
 

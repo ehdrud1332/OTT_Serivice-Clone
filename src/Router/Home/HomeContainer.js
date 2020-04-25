@@ -28,7 +28,7 @@ export default class HomeContainer extends Component {
             this.setState({ nowPlaying, upcoming, popular });
         } catch {
             this.setState({
-                error: "can't fing movies infromation"
+                error: "Can't find movies information"
             });
         } finally {
             this.setState({

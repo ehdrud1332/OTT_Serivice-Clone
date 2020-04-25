@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  padding-top: 30px;
+  padding-top: 10px;
 `;
 
 const Title = styled.span`

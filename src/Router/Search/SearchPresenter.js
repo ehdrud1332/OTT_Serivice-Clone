@@ -21,11 +21,11 @@ import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
 
 const Container = styled.div`
-  padding: 0px 20px;
+  padding: 15px 20px;
 `;
 
 const Form = styled.form`
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   width: 100%;
 `;
 

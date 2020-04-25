@@ -47,10 +47,17 @@ const Year = styled.span`
   color: rgba(255, 255, 255, 0.5);
 `;
 
+
 const Poster = ({id, imageUrl, title, rating, year}) => (
     <Container>
         <ImageContainer>
-            <Image bgUrl={`http://images.tmdb.org/t/p/w300${imageUrl}`} />
+            <Image bgUrl={
+                imageUrl
+                    ? `http://images.tmdb.org/t/p/w300${imageUrl}`
+                    : require("../Img/emptyimage.png")
+
+
+            } />
 
             <Rating>
                 <span>⭐️</span>

@@ -30,6 +30,7 @@ loading ? (
                         title={movie.title}
                         year={movie.release_date}
                         rating={movie.vote_average}
+                        isMovie={true}
                     />
                 )}
             </Section>
@@ -46,6 +47,7 @@ loading ? (
                         title={movie.title}
                         year={movie.release_date}
                         rating={movie.vote_average}
+                        isMovie={true}
                     />
                 )}
             </Section>
@@ -62,6 +64,7 @@ loading ? (
                         title={movie.title}
                         year={movie.release_date}
                         rating={movie.vote_average}
+                        isMovie={true}
                     />
                 )}
             </Section>

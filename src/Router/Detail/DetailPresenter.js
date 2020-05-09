@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from "../../Components/Loader";
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -69,14 +70,28 @@ const Overview = styled.p`
 
 const DetailPresenter = ({result, loading, error}) =>
     loading ? (
-        <Loader/>
+
+        <>
+            <Helmet>
+                <title>Loading | Netflix Clone</title>
+            </Helmet>
+            <Loader/>
+        </>
+
+
     ) : (
+
+
+
         <Container>
-            <Backdrop bgImage={
-                result.backdrop_path
-                    ? `http://image.tmdb.org/t/p/original${result.backdrop_path}`
-                    : require("../../Img/emptyimage.png")}
-            />
+
+            <Helmet>
+                <title>
+                    {result.original_title ? result.original_title : result.original_name}
+                </title>
+            </Helmet>
+
+            <Backdrop bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
             <Content>
                 <Cover
                   bgImage={

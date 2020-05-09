@@ -16,6 +16,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
+import Helmet from 'react-helmet';
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
@@ -55,6 +56,13 @@ class SearchPresenter extends Component {
 
         return (
             <Container>
+
+                <Helmet>
+                    <title>Search | Netflix Clone</title>
+                </Helmet>
+
+
+
                 <Form onSubmit={handleSubmit}>
                     <Input
                         placeholder="Search Movies or Tv Shows..."
@@ -62,6 +70,8 @@ class SearchPresenter extends Component {
                         onChange={updateKeyword}
                     />
                 </Form>
+
+
                 {loading ? (
                     <Loader/>
                 ) : (
@@ -76,6 +86,7 @@ class SearchPresenter extends Component {
                                         imageUrl={movie.poster_path}
                                         rating={movie.vote_average}
                                         year={movie.release_date}
+                                        isMovie={true}
                                     />
                                 ))}
                             </Section>

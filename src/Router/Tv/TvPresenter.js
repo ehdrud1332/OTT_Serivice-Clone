@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster"
@@ -12,57 +13,66 @@ const Container = styled.div`
 `;
 
 const TvPresenter = ({ topRated, popular, airingToday, loading, error}) => (
-    loading ? (
-        <Loader/>
-    ) : (
-        <Container>
-            {topRated && topRated.length > 0 && (
-                <Section title="topRated">
-                    {topRated.map(tv =>
-                        <Poster
-                            key={tv.id}
-                            id={tv.original_name}
-                            title={tv.name}
-                            imageUrl={tv.poster_path}
-                            rating={tv.vote_average}
-                            year={tv.first_air_date}
-                        />
+    <>
+        <Helmet>
+            <title>Tv | Netflix Clone</title>
+        </Helmet>
+        {
+            loading ? (
+                <Loader/>
+            ) : (
+                <Container>
+                    {topRated && topRated.length > 0 && (
+                        <Section title="topRated">
+                            {topRated.map(tv =>
+                                <Poster
+                                    key={tv.id}
+                                    id={tv.id}
+                                    title={tv.name}
+                                    imageUrl={tv.poster_path}
+                                    rating={tv.vote_average}
+                                    year={tv.first_air_date}
+                                />
+                            )}
+                        </Section>
                     )}
-                </Section>
-            )}
 
-            {popular && popular.length > 0 && (
-                <Section title="popular">
-                    {popular.map(tv =>
-                        <Poster
-                            key={tv.id}
-                            id={tv.original_name}
-                            title={tv.name}
-                            imageUrl={tv.poster_path}
-                            rating={tv.vote_average}
-                            year={tv.first_air_date}
-                        />
+                    {popular && popular.length > 0 && (
+                        <Section title="popular">
+                            {popular.map(tv =>
+                                <Poster
+                                    key={tv.id}
+                                    id={tv.id}
+                                    title={tv.name}
+                                    imageUrl={tv.poster_path}
+                                    rating={tv.vote_average}
+                                    year={tv.first_air_date}
+                                />
+                            )}
+                        </Section>
                     )}
-                </Section>
-            )}
 
-            {airingToday && airingToday.length > 0 && (
-                <Section title="airingToday">
-                    {airingToday.map(tv =>
-                        <Poster
-                            id={tv.original_name}
-                            title={tv.name}
-                            imageUrl={tv.poster_path}
-                            rating={tv.vote_average}
-                            year={tv.first_air_date}
-                        />
+                    {airingToday && airingToday.length > 0 && (
+                        <Section title="airingToday">
+                            {airingToday.map(tv =>
+                                <Poster
+                                    key={tv.id}
+                                    id={tv.id}
+                                    title={tv.name}
+                                    imageUrl={tv.poster_path}
+                                    rating={tv.vote_average}
+                                    year={tv.first_air_date}
+                                />
+                            )}
+                        </Section>
+
                     )}
-                </Section>
+                    {error && <Message color="#e74c3c" text={error} />}
+                </Container>
+            )
+        }
+    </>
 
-            )}
-            {error && <Message color="#e74c3c" text={error} />}
-        </Container>
-    )
 )
 
 

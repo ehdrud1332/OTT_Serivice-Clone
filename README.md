@@ -1,68 +1,117 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 주요기능
 
-## Available Scripts
+-----------------
+- Axios를 이용한 Networking 및 API 뿌려주기
+- 메인화면 구현 (Movie ,TV)
+- 클릭시 상세정보 제공 페이지 구현
+- Keyword 기입 Search 페이지 구현
 
-In the project directory, you can run:
+## 완성화면
 
-### `npm start`
+-----------------
+<img src=“https://user-images.githubusercontent.com/60862525/92943571-e7846100-f48d-11ea-9aae-1e3af0f61b8e.gif” width=“30%”><img src=“https://user-images.githubusercontent.com/60862525/92942804-e69eff80-f48c-11ea-9052-0649959e9eaf.gif” width=“30%”>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 활용한 기술
+-----------------
+- nodeJS, React, Axios(NetWorking)
+- Netlify, TMDB
+- PosterImage, DetailPosterImage etc.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 스터디 노트
+-----------------
 
-### `npm test`
+**Axios를 이용한 API 네트워킹**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- API를 활용해 원하는 항목 뿌려주기(Popular, Now-Playing etc.)
+- http 서보와의 통신을 위해 네트워크 라이브러리 Axios를 사용했고 이를 통해서 모듈화 진행
+- Postman을 활용해 서버연결 테스트 및 결과값 체크
 
-### `npm run build`
+**_API 연결 방식 스터디_**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. 네트워킹 하기위해 axios.create(baseUrl, api_key) 상수화
+2. 원하는 정보 추출을 위한 불러오기 함수 생성
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<img src=“https://user-images.githubusercontent.com/60862525/92945385-29160b80-f490-11ea-9bea-1d8a7a6089c2.png” width=“40%”>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. 조건문을 통한 특정 정보 추출
+~~~
+{nowPlaying && nowPlaying.length > 0 && (
+    <Section title="Now-Playing">
+        {nowPlaying.map(movie =>
+            <Poster
+                key={movie.id}
+                id={movie.id}
+                imageUrl={movie.poster_path}
+                title={movie.title}
+                year={movie.release_date}
+                rating={movie.vote_average}
+                isMovie={true}
+            />
+        )}
+    </Section>
 
-### `npm run eject`
+)}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+~~~
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Keyword  검색으로 값 불러오기**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. 초기 상태값 정해주기
+~~~
+state = {
+    movieResults: null,
+    tvResults: null,
+    keyword: "",
+    loading: false,
+    error: null
+}
+~~~
+2. Keyword 함수 만들기
+~~~
+handleSubmit = event => {
+    // 이것해줘야 키워드 값이 인식이 된다.
+    event.preventDefault();
+    const {keyword} = this.state;
+    if (keyword !== "") {
+        this.searchByKeyword();
+    }
+};
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. 비동기방식으로 진행
+2. try에 대한 결과값을 상수화 및 상태값 재선언
+searchByKeyword = async () => {
+    const {keyword} = this.state;
+    this.setState({loading: true})
+    try {
+        const {
+            data : { results: movieResults}
+        } = await moviesApi.search(keyword)
+        const {
+            data : { results: tvResults}
+        } = await tvApi.search(keyword)
+        this.setState({
+            movieResults, tvResults
+        });
+    } catch {
+        this.setState({error: "can't find results"});
+    } finally {
+        this.setState({loading: false});
+    }
+};
 
-## Learn More
+~~~
+3. Keyword에 반응하는 검색창 생성 
+~~~
+<Form onSubmit={handleSubmit}>
+    <Input
+        placeholder="Search Movies or Tv Shows..."
+        value={keyword}
+        onChange={updateKeyword}
+    />
+</Form>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+~~~
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

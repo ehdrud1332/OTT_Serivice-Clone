@@ -127,6 +127,9 @@ searchByKeyword = async () => {
 
 <img src="https://user-images.githubusercontent.com/60862525/92949207-aa23d180-f495-11ea-919c-da5692c94751.png" width="50%">
 
+## To Do List
 
-
+✔︎ axios networking 숙련도 장승
+✔︎ 비동기 방식(Loading)에 대해서 좀더 이해하기
+✔︎ 상태값(라이프사이클) 변화 구조 더 공부하기
 

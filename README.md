@@ -35,6 +35,7 @@
 2. 원하는 정보 추출을 위한 불러오기 함수 생성
 <img src="https://user-images.githubusercontent.com/60862525/92948507-6e3c3c80-f494-11ea-972d-233e7a77d0f4.png">
 3. 조건문을 통한 특정 정보 추출
+
 ~~~
 {nowPlaying && nowPlaying.length > 0 && (
     <Section title="Now-Playing">
@@ -114,8 +115,17 @@ searchByKeyword = async () => {
         onChange={updateKeyword}
     />
 </Form>
+~~~
+
+### 클릭시 상세정보 보여주기
+- Link를 활용해 클릭시 이동
+- API 데이터를 이용해 원하는 정보 mapping
 
 ~~~
+<Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+~~~
+
+<img src="https://user-images.githubusercontent.com/60862525/92949207-aa23d180-f495-11ea-919c-da5692c94751.png" width="50%">
 
 
 

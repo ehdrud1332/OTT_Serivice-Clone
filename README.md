@@ -56,7 +56,7 @@
 
 ~~~
 
-### Keyword  검색으로 값 불러오기
+### _Keyword  검색으로 값 불러오기_
 
 1. 초기 상태값 정해주기
 ~~~
@@ -117,7 +117,7 @@ searchByKeyword = async () => {
 </Form>
 ~~~
 
-### 클릭시 상세정보 보여주기
+### _Poster 클릭시 상세정보 페이지로 이동_
 - Link를 활용해 클릭시 이동
 - API 데이터를 이용해 원하는 정보 mapping
 
@@ -127,7 +127,7 @@ searchByKeyword = async () => {
 
 <img src="https://user-images.githubusercontent.com/60862525/92949207-aa23d180-f495-11ea-919c-da5692c94751.png" width="50%">
 
-## To Do List
+## _To Do List_
 
 ✔︎ axios networking 숙련도 장승
 ✔︎ 비동기 방식(Loading)에 대해서 좀더 이해하기

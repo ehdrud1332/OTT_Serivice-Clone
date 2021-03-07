@@ -1,6 +1,4 @@
 ## 주요기능
-
------------------
 - Axios를 이용한 Networking 및 API 뿌려주기
 - 메인화면 구현 (Movie ,TV)
 - 클릭시 상세정보 제공 페이지 구현
@@ -8,20 +6,22 @@
 
 ## 완성화면
 
------------------
-
 <img src="https://user-images.githubusercontent.com/60862525/92948395-44831580-f494-11ea-8ea4-76ddb40918b7.gif" width="50%">
 <img src="https://user-images.githubusercontent.com/60862525/92948445-58c71280-f494-11ea-82fc-51ce63c8457c.gif" width="50%">
 
 
 ## 활용한 기술
------------------
-- nodeJS, React, Axios(NetWorking)
-- Netlify, TMDB
-- PosterImage, DetailPosterImage etc.
-
-## 스터디 노트
------------------
+~~~ts
+"packages": [
+"React"
+"React Hooks"
+"axios"
+"react-helmet"
+"react-router-dom"
+"styled-components"
+]
+~~~
+## STUDY NOTE
 
 ### _Axios를 이용한 API 네트워킹_
 
@@ -36,7 +36,7 @@
 <img src="https://user-images.githubusercontent.com/60862525/92948507-6e3c3c80-f494-11ea-972d-233e7a77d0f4.png">
 3. 조건문을 통한 특정 정보 추출
 
-~~~
+~~~ts
 {nowPlaying && nowPlaying.length > 0 && (
     <Section title="Now-Playing">
         {nowPlaying.map(movie =>
@@ -59,7 +59,7 @@
 ### _Keyword  검색으로 값 불러오기_
 
 1. 초기 상태값 정해주기
-~~~
+~~~ts
 state = {
     movieResults: null,
     tvResults: null,
@@ -71,7 +71,7 @@ state = {
 
 2. Keyword 함수 만들기
 
-~~~
+~~~ts
 handleSubmit = event => {
     // 이것해줘야 키워드 값이 인식이 된다.
     event.preventDefault();
@@ -107,7 +107,7 @@ searchByKeyword = async () => {
  
 3. Keyword에 반응하는 검색창 생성
 
-~~~
+~~~ts
 <Form onSubmit={handleSubmit}>
     <Input
         placeholder="Search Movies or Tv Shows..."
@@ -121,7 +121,7 @@ searchByKeyword = async () => {
 - Link를 활용해 클릭시 이동
 - API 데이터를 이용해 원하는 정보 mapping
 
-~~~
+~~~ts
 <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
 ~~~
 
@@ -129,7 +129,7 @@ searchByKeyword = async () => {
 
 ## _To Do List_
 
-✔︎ axios networking 숙련도 장승
-✔︎ 비동기 방식(Loading)에 대해서 좀더 이해하기
-✔︎ 상태값(라이프사이클) 변화 구조 더 공부하기
+- [ ] axios networking 숙련도 장승
+- [ ] 비동기 방식(Loading)에 대해서 좀더 이해하기
+- [ ] 상태값(라이프사이클) 변화 구조 더 공부하기
 
